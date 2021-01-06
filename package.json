@@ -1,0 +1,20 @@
+{
+  "name": "Gallerie_JS",
+  "version": "1.0.0",
+  "description": "Gallerie JS",
+  "main": "src/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandreDestoky/Gallerie-JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexandreDestoky/Gallerie-JS/issues"
+  },
+  "homepage": "https://github.com/AlexandreDestoky/Gallerie-JS#readme"
+}

@@ -1,0 +1,7 @@
+const slider = [
+  {}
+]
+
+const menu = [
+  {}
+]

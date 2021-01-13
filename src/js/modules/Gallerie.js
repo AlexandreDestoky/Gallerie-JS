@@ -24,7 +24,6 @@ export default class Gallerie {
     }
   }
 
-
   render() {
     //on met le template de la gallerie dans #app
     this.el.innerHTML = this.template;
@@ -32,8 +31,6 @@ export default class Gallerie {
     //comme this.el existe, on peut faire des querySelector dessus
     this.elementsSlider = this.el.querySelector(".elementsSlider");
     this.elementsMenu = this.el.querySelector(".elementsMenu");
-
-    console.log(this.elementsSlider);
 
     // Rendu de chaque image
     for (const image of this.images) {

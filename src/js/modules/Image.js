@@ -34,7 +34,7 @@ export default class Image {
 
     //Pour le Slider
     this.elSlider = document.createElement("li");
-    this.elSlider.setAttribute("id",this.id);
+    this.elSlider.setAttribute("id", this.id);
     this.elSlider.classList.add("slide");
     this.elSlider.innerHTML = this.sliderTemplate;
     this.parent.elementsSlider.append(this.elSlider);
@@ -44,6 +44,25 @@ export default class Image {
     this.elMenu.innerHTML = this.menuTemplate;
     this.parent.elementsMenu.append(this.elMenu);
 
+    this._activerBtns();
+  }
 
+  //Toggle d'Affichage du texte de l'image 
+  toggleText() {
+    let text = this.elSlider.querySelector(".slide figcaption");
+    let icon = text.querySelector("i");
+    if(icon.textContent == "add_circle") {
+      text.style.right = "0";
+      icon.textContent = "remove_circle";
+    } else {
+      text.style.right = "-20%";
+      icon.textContent = "add_circle";
+    }
+  }
+
+  _activerBtns() {
+    this.elSlider.querySelector(".icon-info").addEventListener("click",()=> {
+      this.toggleText();
+    })
   }
 }

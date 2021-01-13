@@ -1,7 +1,7 @@
-const slider = [
-  {}
-]
+import images from "./data";
+import Gallerie from "./modules/Gallerie";
 
-const menu = [
-  {}
-]
+new Gallerie({
+  el: "#app",
+  images,
+});

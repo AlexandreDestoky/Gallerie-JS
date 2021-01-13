@@ -7,6 +7,7 @@ export default class Gallerie {
     this.elementsSlider;
     this.elementsMenu;
 
+    this.cpt = 0;
     this.images = [];
     this.loadImages(data.images);
     this.template = gallerieTemplate;
@@ -36,5 +37,32 @@ export default class Gallerie {
     for (const image of this.images) {
       image.render();
     }
+
+    this._titleUpdate();
+    this._activerBtns();
+  }
+
+  
+  /**
+   * Met a jour le titre en fonction de l'image
+   */
+  _titleUpdate() {
+    this.title = this.el.querySelector(".slider-menu h1");
+    this.title.innerText = (this.images[this.cpt]).title;
+  }
+
+  next() {
+    this.cpt++;
+    if(this.cpt == this.images.length) this.cpt = 0;
+    this.elementsSlider.style.left = `-${this.cpt*100}%`;
+    this._titleUpdate();
+  }
+
+
+  _activerBtns() {
+    this.el.querySelector(".next").addEventListener("click",()=> {
+      this.next();
+      console.log("fdp");
+    })
   }
 }

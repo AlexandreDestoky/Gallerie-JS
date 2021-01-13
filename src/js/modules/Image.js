@@ -47,22 +47,30 @@ export default class Image {
     this._activerBtns();
   }
 
-  //Toggle d'Affichage du texte de l'image 
+
+  /**
+   * Toggle d'Affichage du texte de l'image
+   */
   toggleText() {
     let text = this.elSlider.querySelector(".slide figcaption");
     let icon = text.querySelector("i");
-    if(icon.textContent == "add_circle") {
+
+    if (icon.innerText == "add_circle") {
       text.style.right = "0";
-      icon.textContent = "remove_circle";
+      icon.innerText = "remove_circle";
     } else {
       text.style.right = "-20%";
-      icon.textContent = "add_circle";
+      icon.innerText = "add_circle";
     }
   }
 
+  /**
+   * Activation éléments interactifs
+   * (bouton "+" d'affichage de texte de l'image)
+   */
   _activerBtns() {
-    this.elSlider.querySelector(".icon-info").addEventListener("click",()=> {
+    this.elSlider.querySelector(".icon-info").addEventListener("click", () => {
       this.toggleText();
-    })
+    });
   }
 }

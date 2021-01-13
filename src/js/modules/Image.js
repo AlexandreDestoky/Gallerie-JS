@@ -47,7 +47,6 @@ export default class Image {
     this._activerBtns();
   }
 
-
   /**
    * Toggle d'Affichage du texte de l'image
    */

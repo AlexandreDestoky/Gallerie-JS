@@ -10,8 +10,9 @@ export default class Gallerie {
     this.intervalLength = 1500;
     this.interval;
     this.diapoPlay = false;
-
     this.cpt = 0;
+
+    this.title;
     this.images = [];
     this.loadImages(data.images);
     this.template = gallerieTemplate;
@@ -44,6 +45,21 @@ export default class Gallerie {
 
     this._titleUpdate();
     this._activerBtns();
+    this._menuActivation();
+  }
+
+  /**
+   * Activation des liens du Menu
+   */
+  _menuActivation() {
+    for (const image of this.images) {
+      let imageMenu = image.elMenu;
+      imageMenu.querySelector("a").addEventListener("click", () => {
+        this.cpt = image.id - 1;
+        this.elementsSlider.style.left = `-${this.cpt * 100}%`;
+        this._titleUpdate();
+      });
+    }
   }
 
   /**

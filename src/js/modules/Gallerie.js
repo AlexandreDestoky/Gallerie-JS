@@ -7,6 +7,10 @@ export default class Gallerie {
     this.elementsSlider;
     this.elementsMenu;
 
+    this.intervalLength = 1500;
+    this.interval;
+    this.diapoPlay = false;
+
     this.cpt = 0;
     this.images = [];
     this.loadImages(data.images);
@@ -42,27 +46,90 @@ export default class Gallerie {
     this._activerBtns();
   }
 
-  
   /**
    * Met a jour le titre en fonction de l'image
    */
   _titleUpdate() {
     this.title = this.el.querySelector(".slider-menu h1");
-    this.title.innerText = (this.images[this.cpt]).title;
+    this.title.innerText = this.images[this.cpt].title;
   }
 
+  /**
+   * Image suivante
+   */
   next() {
     this.cpt++;
-    if(this.cpt == this.images.length) this.cpt = 0;
-    this.elementsSlider.style.left = `-${this.cpt*100}%`;
+    if (this.cpt == this.images.length) this.cpt = 0;
+    this.elementsSlider.style.left = `-${this.cpt * 100}%`;
     this._titleUpdate();
   }
 
+  /**
+   * Image précédente
+   */
+  previous() {
+    this.cpt--;
+    if (this.cpt == -1) this.cpt = this.images.length - 1;
+    this.elementsSlider.style.left = `-${this.cpt * 100}%`;
+    this._titleUpdate();
+  }
 
+  /**
+   * Lancement diaporama
+   */
+  play() {
+    //si le diapo n'est pas déjà en marche
+    if (this.diapoPlay == false) {
+      this.next(); // on lance directement une occurence
+      this.diapoPlay = true;
+      this._toggleActive();
+
+      this.interval = setInterval(() => {
+        this.next();
+      }, this.intervalLength);
+    }
+  }
+
+  /**
+   * Interruption diaporama
+   */
+  pause() {
+    clearInterval(this.interval);
+    this._toggleActive();
+    this.diapoPlay = false;
+  }
+
+  /**
+   * Toggle classes active pour BTN PLAY et BTN STOP
+   */
+  _toggleActive() {
+    this.el.querySelector(".play").classList.toggle("active");
+    this.el.querySelector(".stop").classList.toggle("active");
+  }
+
+  /**
+   * Activation éléments interactifs
+   * (bouton de naviguation)
+   */
   _activerBtns() {
-    this.el.querySelector(".next").addEventListener("click",()=> {
+    //Click sur BTN NEXT
+    this.el.querySelector(".next").addEventListener("click", () => {
       this.next();
-      console.log("fdp");
-    })
+    });
+
+    //Click sur BTN PREVIOUS
+    this.el.querySelector(".previous").addEventListener("click", () => {
+      this.previous();
+    });
+
+    //Click sur BTN PLAY
+    this.el.querySelector(".play").addEventListener("click", () => {
+      this.play();
+    });
+
+    //Click sur BTN STOP
+    this.el.querySelector(".stop").addEventListener("click", () => {
+      this.pause();
+    });
   }
 }

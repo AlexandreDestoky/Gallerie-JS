@@ -6,7 +6,7 @@ export default `
 
     <!-- SLIDER (Grande Image) -->
     <div class="slides">
-      <ul style="width: 500%">
+      <ul style="width: 500%" class="elementsSlider">
 
       </ul>
     </div>
@@ -16,7 +16,7 @@ export default `
     <div class="menu">
       <div class="slider-menu">
         <h1>Titre</h1>
-        <ul class="slides">
+        <ul class="slides elementsMenu">
           
         </ul>
       </div>

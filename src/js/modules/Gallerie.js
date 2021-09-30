@@ -111,7 +111,7 @@ export default class Gallerie {
    */
   pause() {
     clearInterval(this.interval);
-    this._toggleActive();
+    if(this.diapoPlay == true) this._toggleActive(); //
     this.diapoPlay = false;
   }
 
@@ -148,4 +148,5 @@ export default class Gallerie {
       this.pause();
     });
   }
+
 }
